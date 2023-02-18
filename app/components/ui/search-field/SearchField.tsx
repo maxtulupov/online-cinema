@@ -1,9 +1,21 @@
-import { FC } from 'react';
+import { ChangeEvent, FC } from 'react';
 
-interface ISearchField {}
+import MaterialIcon from '../MaterialIcon';
 
-const SearchField: FC<ISearchField> = () => {
-	return <div>SearchField</div>;
+import styles from './SearchField.module.scss';
+
+interface ISearchField {
+	searchTerm: string;
+	handleSearch: (event: ChangeEvent<HTMLInputElement>) => void;
+}
+
+const SearchField: FC<ISearchField> = ({ searchTerm, handleSearch }) => {
+	return (
+		<div className={styles.search}>
+			<MaterialIcon name="MdSearch" />
+			<input placeholder="Search" value={searchTerm} onChange={handleSearch} />
+		</div>
+	);
 };
 
 export default SearchField;

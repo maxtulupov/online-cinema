@@ -1,6 +1,6 @@
 .list {
 	@apply absolute border border-gray-700 rounded-layout bg-gray-800 w-full animate-fade z-10;
-	top: calc(100% + 15xp);
+	top: calc(100% + 15px);
 
 	> a {
 		@apply flex items-center py-3 px-4 relative;
@@ -19,7 +19,7 @@
 		}
 
 		img {
-			@apply rounded-image;
+			@apply rounded-image object-cover;
 		}
 		> span {
 			@apply ml-3 text-white truncate;

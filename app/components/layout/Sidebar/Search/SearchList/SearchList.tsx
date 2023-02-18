@@ -21,7 +21,6 @@ const SearchList: FC<{ movies: IMovie[] }> = ({ movies }) => {
 							width={50}
 							height={50}
 							alt={movie.title}
-							fill
 							draggable={false}
 						/>
 						<span>{movie.title}</span>
