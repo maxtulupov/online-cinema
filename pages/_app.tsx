@@ -6,7 +6,7 @@ import '../styles/globals.scss';
 export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<MainProvider>
-			<Component {...pageProps} />;
+			<Component {...pageProps} />
 		</MainProvider>
 	);
 }

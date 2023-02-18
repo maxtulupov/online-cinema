@@ -4,9 +4,7 @@ import styles from './Layout.module.scss';
 import Navigation from './Navigation/Navigation';
 import Sidebar from './Sidebar/Sidebar';
 
-interface IProps {}
-
-const Layout: FC<IProps> = ({ children }) => {
+const Layout: FC = ({ children }) => {
 	return (
 		<div className={styles.layout}>
 			<Navigation />
