@@ -6,8 +6,9 @@ import logoImage from '@/assets/images/logo.svg';
 
 import { siteName, titleMerge } from '@/config/seo.config';
 
+import { onlyText } from '../string/clearText';
+
 import { ISeo } from './meta.interface';
-import { onlyText } from './string/clearText';
 
 const Meta: FC<ISeo> = ({ title, description, image, children }) => {
 	const { asPath } = useRouter();

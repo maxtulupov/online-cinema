@@ -28,7 +28,7 @@ export interface IMovie {
 	bigPoster: string;
 	title: string;
 	parameters: IParameters;
-	gerner: IGenre[];
+	genres: IGenre[];
 	actors: IActor[];
 	countOpened: number;
 	videoUrl: string;
