@@ -4,7 +4,11 @@ import styles from './Layout.module.scss';
 import Navigation from './Navigation/Navigation';
 import Sidebar from './Sidebar/Sidebar';
 
-const Layout: FC = ({ children }) => {
+interface ILauoyt {
+	children: JSX.Element;
+}
+
+const Layout: FC<ILauoyt> = ({ children }) => {
 	return (
 		<div className={styles.layout}>
 			<Navigation />
