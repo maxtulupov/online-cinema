@@ -106,9 +106,9 @@ module.exports = {
           backgroundColor: theme('colors.gray.950'),
           color: theme('colors.white'),
           boxShadow: theme('boxShadow.lg'),
-          '&:hover': {
-            backgroundColor: '#ff0009',
-          }
+          // '&:hover': {
+          //   backgroundColor: '#ff0009',
+          // }
         }
       }),
       addUtilities({
