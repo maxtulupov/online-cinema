@@ -9,6 +9,7 @@ import Meta from '@/utils/meta/Meta';
 import { useAuth } from '../../../hooks/useAuth';
 
 import styles from './Auth.module.scss';
+import AuthFields from './AuthFields';
 import { IAuthInput } from './auth.interface';
 import { useAuthRedirect } from './useAuthRedirect';
 
@@ -30,8 +31,12 @@ const Auth: FC<IAuth> = () => {
 		mode: 'onChange',
 	});
 
-	const login = (data: any) => {};
-	const register = (data: any) => {};
+	const login = (data: any) => {
+		alert(data, 'login');
+	};
+	const register = (data: any) => {
+		alert(data, 'register');
+	};
 
 	const onSubmit: SubmitHandler<IAuthInput> = (data) => {
 		if (type === 'login') login(data);
@@ -45,7 +50,11 @@ const Auth: FC<IAuth> = () => {
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Heading title="Auth" className="mb-6" />
 
-					{/* {fields} */}
+					<AuthFields
+						formState={formState}
+						register={RegisterInput}
+						isPasswordRequired
+					/>
 
 					<div className={styles.buttons}>
 						<Button
