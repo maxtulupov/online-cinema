@@ -32,10 +32,10 @@ const Auth: FC<IAuth> = () => {
 	});
 
 	const login = (data: any) => {
-		alert(data, 'login');
+		alert(`${data} - Логин`);
 	};
 	const register = (data: any) => {
-		alert(data, 'register');
+		alert(`${data} - Регистраниця}`);
 	};
 
 	const onSubmit: SubmitHandler<IAuthInput> = (data) => {

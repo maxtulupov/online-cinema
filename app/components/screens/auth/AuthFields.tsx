@@ -28,6 +28,7 @@ const AuthFields: FC<IAuthFields> = ({
 				})}
 				placeholder="E-mail"
 				error={errors.email}
+				autoComplete="none"
 			/>
 			<Field
 				{...register(
@@ -44,7 +45,8 @@ const AuthFields: FC<IAuthFields> = ({
 				)}
 				placeholder="Password"
 				type="password"
-				error={errors.email}
+				error={errors.password}
+				autoComplete="none"
 			/>
 		</>
 	);
