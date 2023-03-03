@@ -1,9 +1,24 @@
 import { FC } from 'react';
 
-interface IProps {}
+import MaterialIcon from '@/components/ui/MaterialIcon';
 
-const LogoutButton: FC<IProps> = () => {
-	return <div>LogoutButton</div>;
+import { useActions } from '../../../../../hooks/useActions';
+
+const LogoutButton: FC = () => {
+	const { logout } = useActions();
+
+	const handleLogout = (e: MouseEvent<HTMLAnchorElement>) => {
+		e.preventDefault();
+		logout();
+	};
+	return (
+		<li>
+			<a onClick={handleLogout}>
+				<MaterialIcon name="MdLogout" />
+				<span>Logout</span>
+			</a>
+		</li>
+	);
 };
 
 export default LogoutButton;

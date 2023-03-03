@@ -6,6 +6,7 @@ import Heading from '@/ui/heading/Heading';
 
 import Meta from '@/utils/meta/Meta';
 
+import { useActions } from '../../../hooks/useActions';
 import { useAuth } from '../../../hooks/useAuth';
 
 import styles from './Auth.module.scss';
@@ -31,12 +32,7 @@ const Auth: FC<IAuth> = () => {
 		mode: 'onChange',
 	});
 
-	const login = (data: any) => {
-		alert(`${data} - Логин`);
-	};
-	const register = (data: any) => {
-		alert(`${data} - Регистраниця}`);
-	};
+	const { login, register } = useActions();
 
 	const onSubmit: SubmitHandler<IAuthInput> = (data) => {
 		if (type === 'login') login(data);

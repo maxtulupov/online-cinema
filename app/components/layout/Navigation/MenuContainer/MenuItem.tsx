@@ -8,8 +8,6 @@ import MaterialIcon from '@/components/ui/MaterialIcon';
 import styles from './Menu.module.scss';
 import { IMenuItem } from './menu.interface';
 
-interface IProps {}
-
 const MenuItem: FC<{ item: IMenuItem }> = ({ item }) => {
 	const { asPath } = useRouter();
 
