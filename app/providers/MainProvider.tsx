@@ -6,6 +6,9 @@ import Layout from '@/components/layout/Layout';
 
 import { store } from '@/store/store';
 
+import { TypeComponentAuthFields } from '../shared/types/auth.types';
+
+import AuthProvider from './AuthProvider/AuthProvider';
 import HeadProvider from './HeadProvider/HeadProvider';
 import ReduxToast from './ReduxToast';
 
@@ -17,13 +20,15 @@ const queryClient = new QueryClient({
 	},
 });
 
-const MainProvider: FC<any> = ({ children }) => {
+const MainProvider: FC<TypeComponentAuthFields> = ({ children, Component }) => {
 	return (
 		<HeadProvider>
 			<Provider store={store}>
 				<QueryClientProvider client={queryClient}>
 					<ReduxToast />
-					<Layout>{children}</Layout>
+					<AuthProvider Component={Component}>
+						<Layout>{children}</Layout>
+					</AuthProvider>
 				</QueryClientProvider>
 			</Provider>
 		</HeadProvider>
