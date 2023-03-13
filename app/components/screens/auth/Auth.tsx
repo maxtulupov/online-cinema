@@ -24,7 +24,7 @@ const Auth: FC<IAuth> = () => {
 	const [type, setType] = useState<'login' | 'register'>('login');
 
 	const {
-		register: RegisterInput,
+		register: registerInput,
 		handleSubmit,
 		formState,
 		reset,
@@ -48,7 +48,7 @@ const Auth: FC<IAuth> = () => {
 
 					<AuthFields
 						formState={formState}
-						register={RegisterInput}
+						register={registerInput}
 						isPasswordRequired
 					/>
 

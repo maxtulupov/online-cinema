@@ -6,13 +6,14 @@ import { useAuth } from '@/hooks/useAuth';
 import { TypeComponentAuthFields } from '@/shared/types/auth.types';
 
 const CheckRole: FC<TypeComponentAuthFields> = ({
+	children,
 	Component: { isOnlyAdmin, isOnlyUser },
 }) => {
 	const { user } = useAuth();
 
 	const router = useRouter();
 
-	const Children = () => <>{Children}</>;
+	const Children = () => <>{children}</>;
 
 	if (user?.isAdmin) return <Children />;
 

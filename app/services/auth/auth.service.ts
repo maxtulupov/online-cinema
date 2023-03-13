@@ -35,6 +35,7 @@ export const AuthService = {
 		return response;
 	},
 	logout() {
+		console.log('logoutss');
 		removeTokensStorage();
 		localStorage.removeItem('user');
 	},
