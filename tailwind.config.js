@@ -131,7 +131,7 @@ module.exports = {
 
         '.image-like-bg': {
           objectPosition: 'center',
-          objectFir: 'cover',
+          objectFit: 'cover',
           pointerEvents: 'none'
         }
 
