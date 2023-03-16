@@ -11,7 +11,7 @@ import { IMovie } from '@/shared/types/movie.types';
 
 import { MovieService } from '@/services/movie.service';
 
-import { getMoviesUrl } from '../../../../config/api.config';
+import { getMoviesUrl } from '../../../../../config/api.config';
 import styles from '../Admin.module.scss';
 
 interface IPopularMovie {}
