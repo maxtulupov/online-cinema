@@ -2,10 +2,10 @@ import UserList from '@/components/screens/admin/users/UserList';
 
 import { NextPageAuth } from '../../app/shared/types/auth.types';
 
-const UsersListPage: NextPageAuth = () => {
+const UserListPage: NextPageAuth = () => {
 	return <UserList />;
 };
 
-UsersListPage.isOnlyAdmin = true;
+UserListPage.isOnlyAdmin = true;
 
-export default UsersListPage;
+export default UserListPage;
