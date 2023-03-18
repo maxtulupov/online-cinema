@@ -9,7 +9,6 @@ import { useDebounce } from '@/hooks/useDebounce';
 import { GenreService } from '@/services/genre.service';
 
 import { getAdminUrl } from '../../../../config/url.config';
-import { converMongoDate } from '../../../../utils/data/convertMongoDate';
 import { toastError } from '../../../../utils/toast-error';
 
 export const useGenres = () => {
@@ -41,7 +40,7 @@ export const useGenres = () => {
 
 	const { mutateAsync: deleteAsync } = useMutation(
 		'delete genre',
-		(genreId: string) => GenreService.deleteGenre(genreId),
+		(genreId: string) => GenreService.delete(genreId),
 		{
 			onError: (error) => {
 				toastError(error, 'Delete genre');

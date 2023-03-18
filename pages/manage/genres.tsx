@@ -1,6 +1,6 @@
 import GenreList from '@/components/screens/admin/genres/GenreList';
 
-import { NextPageAuth } from '../../app/shared/types/auth.types';
+import { NextPageAuth } from '@/shared/types/auth.types';
 
 const GenreListPage: NextPageAuth = () => {
 	return <GenreList />;
