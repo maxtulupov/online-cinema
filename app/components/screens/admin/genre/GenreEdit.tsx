@@ -1,19 +1,21 @@
+import { getRandomValues } from 'crypto';
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 
 import SkeletonLoader from '@/ui/SkeletonLoader';
 import AdminNavigation from '@/ui/admin-navigation/AdminNavigation';
+import Button from '@/ui/form-elements/Button';
 import Field from '@/ui/form-elements/Field';
+import SlugField from '@/ui/form-elements/SlugField/SlugField';
 import Heading from '@/ui/heading/Heading';
 
 import Meta from '@/utils/meta/Meta';
+import { generateSlug } from '@/utils/string/generateSlug';
 
 import { IGenreEditInput } from './genre-edit.interface';
 import { useGenreEdit } from './useGenreEdit';
 
-interface IGenreEdit {}
-
-const GenreEdit: FC<IGenreEdit> = () => {
+const GenreEdit: FC = () => {
 	const {
 		handleSubmit,
 		register,
@@ -45,7 +47,15 @@ const GenreEdit: FC<IGenreEdit> = () => {
 								style={{ width: '31%' }}
 							/>
 
-							<div style={{ width: '31%' }}>{/* Slug */}</div>
+							<div style={{ width: '31%' }}>
+								<SlugField
+									register={register}
+									error={errors.slug}
+									generate={() => {
+										setValue('slug', generateSlug(getValues('name')));
+									}}
+								/>
+							</div>
 
 							<Field
 								{...register('icon', {
@@ -57,7 +67,7 @@ const GenreEdit: FC<IGenreEdit> = () => {
 							/>
 
 							{/* Text editor draft.js  */}
-							<button>Update</button>
+							<Button>Update</Button>
 						</div>
 					</>
 				)}
