@@ -23,7 +23,7 @@ export const useGenres = () => {
 				data.map(
 					(genre): ITableItem => ({
 						_id: genre._id,
-						editUrl: getAdminUrl(`Genre/edit/${genre._id}`),
+						editUrl: getAdminUrl(`genre/edit/${genre._id}`),
 						items: [genre.name, genre.slug],
 					})
 				),
