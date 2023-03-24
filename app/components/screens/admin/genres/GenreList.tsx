@@ -12,15 +12,25 @@ import { useGenres } from './useGenres';
 interface IGenreList {}
 
 const GenreList: FC<IGenreList> = () => {
-	const { handleSearch, isLoading, searchTerm, data, deleteAsync } =
-		useGenres();
+	const {
+		handleSearch,
+		isLoading,
+		searchTerm,
+		data,
+		deleteAsync,
+		createAsync,
+	} = useGenres();
 
 	return (
 		<Meta title="Genres">
 			<AdminNavigation />
 			<Heading title="Genres" />
 
-			<AdminHeader handleSearch={handleSearch} searchTerm={searchTerm} />
+			<AdminHeader
+				handleSearch={handleSearch}
+				searchTerm={searchTerm}
+				onClick={createAsync}
+			/>
 			<AdminTable
 				isLoading={isLoading}
 				removeHandler={deleteAsync}

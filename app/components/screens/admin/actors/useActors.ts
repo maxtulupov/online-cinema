@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { ChangeEvent, useMemo, useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
 import { toastr } from 'react-redux-toastr';
@@ -8,8 +9,9 @@ import { useDebounce } from '@/hooks/useDebounce';
 
 import { ActorService } from '@/services/actor.service';
 
-import { getAdminUrl } from '../../../../config/url.config';
-import { toastError } from '../../../../utils/toast-error';
+import { toastError } from '@/utils/toast-error';
+
+import { getAdminUrl } from '@/config/url.config';
 
 export const useActors = () => {
 	const [searchTerm, setSearchTerm] = useState('');
@@ -23,7 +25,7 @@ export const useActors = () => {
 				data.map(
 					(actor): ITableItem => ({
 						_id: actor._id,
-						editUrl: getAdminUrl(`Actors/edit/${actor._id}`),
+						editUrl: getAdminUrl(`actor/edit/${actor._id}`),
 						items: [actor.name, String(actor.countMovies)],
 					})
 				),
@@ -38,9 +40,26 @@ export const useActors = () => {
 		setSearchTerm(e.target.value);
 	};
 
+	const { push } = useRouter();
+
+	const { mutateAsync: createAsync } = useMutation(
+		'create actor',
+		() => ActorService.create(),
+		{
+			onError: (error) => {
+				toastError(error, 'Create actor');
+			},
+
+			onSuccess: ({ data: _id }) => {
+				toastr.success('Create actor', 'create was successful');
+				push(getAdminUrl(`actor/edit/${_id}`));
+			},
+		}
+	);
+
 	const { mutateAsync: deleteAsync } = useMutation(
 		'delete actors',
-		(actorId: string) => ActorService.deleteActors(actorId),
+		(actorId: string) => ActorService.delete(actorId),
 		{
 			onError: (error) => {
 				toastError(error, 'Delete actors');
@@ -59,7 +78,8 @@ export const useActors = () => {
 			...queryData,
 			searchTerm,
 			deleteAsync,
+			createAsync,
 		}),
-		[queryData, searchTerm, deleteAsync]
+		[queryData, searchTerm, deleteAsync, createAsync]
 	);
 };

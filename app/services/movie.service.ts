@@ -1,9 +1,9 @@
 import { axiosClassic } from 'api/interceptors';
+import axios from 'api/interceptors';
 
 import { IMovie } from '@/shared/types/movie.types';
 
-import axios from '../api/interceptors';
-import { getMoviesUrl } from '../config/api.config';
+import { getMoviesUrl } from '@/config/api.config';
 
 export const MovieService = {
 	async getAll(searchTerm?: string) {
@@ -23,7 +23,19 @@ export const MovieService = {
 		return movies;
 	},
 
-	async deleteMovie(_id: string) {
+	async getById(_id: string) {
+		return axios.get<IGenreEditInput>(getMoviesUrl(`/${_id}`));
+	},
+
+	async create() {
+		return axios.post<string>(getMoviesUrl(`/`));
+	},
+
+	async update(_id: string, data: IMovieEditInput) {
+		return axios.put<string>(getMoviesUrl(`/${_id}`), data);
+	},
+
+	async delete(_id: string) {
 		return axios.delete<string>(getMoviesUrl(`/${_id}`));
 	},
 };
