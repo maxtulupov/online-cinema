@@ -3,23 +3,23 @@ import { SubmitHandler, UseFormSetValue } from 'react-hook-form';
 import { useMutation, useQuery } from 'react-query';
 import { toastr } from 'react-redux-toastr';
 
-import { GenreService } from '@/services/genre.service';
+import { MovieService } from '@/services/movie.service';
 
 import { getKeys } from '@/utils/object/getKeys';
 import { toastError } from '@/utils/toast-error';
 
 import { getAdminUrl } from '@/config/url.config';
 
-import { IGenreEditInput } from './genre-edit.interface';
+import { IMovieEditInput } from './movie-edit.interface';
 
-export const useGenreEdit = (setValue: UseFormSetValue<IGenreEditInput>) => {
+export const useMovieEdit = (setValue: UseFormSetValue<IMovieEditInput>) => {
 	const { push, query } = useRouter();
 
-	const genreId = String(query.id);
+	const movieId = String(query.id);
 
 	const { isLoading } = useQuery(
-		['genre', genreId],
-		() => GenreService.getById(genreId),
+		['movie', movieId],
+		() => MovieService.getById(movieId),
 		{
 			onSuccess: ({ data }) => {
 				getKeys(data).forEach((key) => {
@@ -35,19 +35,19 @@ export const useGenreEdit = (setValue: UseFormSetValue<IGenreEditInput>) => {
 
 	const { mutateAsync } = useMutation(
 		'update genre',
-		(data: IGenreEditInput) => GenreService.update(genreId, data),
+		(data: IMovieEditInput) => MovieService.update(movieId, data),
 		{
 			onError: (error) => {
-				toastError(error, 'Update genre');
+				toastError(error, 'Update movie');
 			},
 			onSuccess: () => {
-				toastr.success('Update gener', 'update was successful');
-				push(getAdminUrl('genres'));
+				toastr.success('Update movie', 'update was successful');
+				push(getAdminUrl('movies'));
 			},
 		}
 	);
 
-	const onSubmit: SubmitHandler<IGenreEditInput> = async (data) => {
+	const onSubmit: SubmitHandler<IMovieEditInput> = async (data) => {
 		await mutateAsync(data);
 	};
 

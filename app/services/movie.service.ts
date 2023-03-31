@@ -1,6 +1,8 @@
 import { axiosClassic } from 'api/interceptors';
 import axios from 'api/interceptors';
 
+import { IMovieEditInput } from '@/screens/admin/movie/movie-edit.interface';
+
 import { IMovie } from '@/shared/types/movie.types';
 
 import { getMoviesUrl } from '@/config/api.config';
@@ -24,7 +26,7 @@ export const MovieService = {
 	},
 
 	async getById(_id: string) {
-		return axios.get<IGenreEditInput>(getMoviesUrl(`/${_id}`));
+		return axios.get<IMovieEditInput>(getMoviesUrl(`/${_id}`));
 	},
 
 	async create() {

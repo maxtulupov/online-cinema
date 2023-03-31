@@ -25,7 +25,7 @@ const DynamicTextEditor = dynamic(
 	}
 );
 
-const GenreEdit: FC = () => {
+const ActorEdit: FC = () => {
 	const {
 		handleSubmit,
 		register,
@@ -55,52 +55,39 @@ const GenreEdit: FC = () => {
 								})}
 								placeholder="Name"
 								error={errors.name}
-								style={{ width: '31%' }}
 							/>
 
-							<div style={{ width: '31%' }}>
-								<SlugField
-									register={register}
-									error={errors.slug}
-									generate={() => {
-										setValue('slug', generateSlug(getValues('name')));
-									}}
-								/>
-							</div>
+							<SlugField
+								register={register}
+								error={errors.slug}
+								generate={() => {
+									setValue('slug', generateSlug(getValues('name')));
+								}}
+							/>
 
-							<Field
+							{/* <Field
 								{...register('icon', {
 									required: 'Icon is required!',
 								})}
 								placeholder="Icon"
 								error={errors.icon}
-								style={{ width: '31%' }}
-							/>
-						</div>
-						<Controller
+							/> */}
+
+							{/* <Controller
 							control={control}
-							name="description"
+							name="photo"
 							defaultValue=""
 							render={({
 								field: { value, onChange },
 								fieldState: { error },
 							}) => (
-								<DynamicTextEditor
-									onChange={onChange}
-									value={value}
-									error={error}
-									placeholder="Description"
-								/>
+								// photo upload
 							)}
 							rules={{
-								validate: {
-									required: (v) =>
-										(v && stripHtml(v).result.length > 0) ||
-										'Description is required',
-								},
+								required: 'Photo is required',
 							}}
-						/>
-
+						/> */}
+						</div>
 						<Button>Update</Button>
 					</>
 				)}
@@ -109,4 +96,4 @@ const GenreEdit: FC = () => {
 	);
 };
 
-export default GenreEdit;
+export default ActorEdit;
