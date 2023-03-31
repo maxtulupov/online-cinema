@@ -4,6 +4,8 @@ import { FC } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { stripHtml } from 'string-strip-html';
 
+import UploadField from '@/components/ui/form-elements/UploadField/UploadField';
+
 import SkeletonLoader from '@/ui/SkeletonLoader';
 import AdminNavigation from '@/ui/admin-navigation/AdminNavigation';
 import Button from '@/ui/form-elements/Button';
@@ -14,6 +16,8 @@ import Heading from '@/ui/heading/Heading';
 
 import Meta from '@/utils/meta/Meta';
 import { generateSlug } from '@/utils/string/generateSlug';
+
+import { validEmail } from '../../../../shared/regex';
 
 import { IActorEditInput } from './actor-edit.interface';
 import { useActorEdit } from './useActorEdit';
@@ -65,28 +69,26 @@ const ActorEdit: FC = () => {
 								}}
 							/>
 
-							{/* <Field
-								{...register('icon', {
-									required: 'Icon is required!',
-								})}
-								placeholder="Icon"
-								error={errors.icon}
-							/> */}
-
-							{/* <Controller
-							control={control}
-							name="photo"
-							defaultValue=""
-							render={({
-								field: { value, onChange },
-								fieldState: { error },
-							}) => (
-								// photo upload
-							)}
-							rules={{
-								required: 'Photo is required',
-							}}
-						/> */}
+							<Controller
+								control={control}
+								name="photo"
+								defaultValue=""
+								render={({
+									field: { value, onChange },
+									fieldState: { error },
+								}) => (
+									<UploadField
+										onChange={onChange}
+										value={value}
+										error={error}
+										folder="actors"
+										placeholder="Photo"
+									/>
+								)}
+								rules={{
+									required: 'Photo is required',
+								}}
+							/>
 						</div>
 						<Button>Update</Button>
 					</>
