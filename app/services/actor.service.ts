@@ -22,7 +22,7 @@ export const ActorService = {
 	},
 
 	async create() {
-		return axios.post<string>(getActorsUrl(`/`));
+		return axios.post<string>(getActorsUrl(''));
 	},
 
 	async update(_id: string, data: IActorEditInput) {

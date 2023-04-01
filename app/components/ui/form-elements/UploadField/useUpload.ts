@@ -34,16 +34,16 @@ export const useUpload: TypeUpload = (onChange, folder) => {
 			setIsLoading(true);
 
 			const files = e.target.files;
-			if (!files?.length) return;
+			console.log(files);
+			if (files?.length) {
+				const formData = new FormData();
+				formData.append('image', files[0]);
+				await mutateAsync(formData);
 
-			const formDate = new FormData();
-			formDate.append('file', files[0]);
-
-			await mutateAsync(formDate);
-
-			setTimeout(() => {
-				setIsLoading(false);
-			}, 1000);
+				setTimeout(() => {
+					setIsLoading(false);
+				}, 1000);
+			}
 		},
 		[mutateAsync]
 	);
