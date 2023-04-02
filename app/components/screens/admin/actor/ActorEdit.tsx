@@ -1,8 +1,5 @@
-import { getRandomValues } from 'crypto';
-import dynamic from 'next/dynamic';
 import { FC } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { stripHtml } from 'string-strip-html';
 
 import UploadField from '@/components/ui/form-elements/UploadField/UploadField';
 
@@ -17,17 +14,8 @@ import Heading from '@/ui/heading/Heading';
 import Meta from '@/utils/meta/Meta';
 import { generateSlug } from '@/utils/string/generateSlug';
 
-import { validEmail } from '../../../../shared/regex';
-
 import { IActorEditInput } from './actor-edit.interface';
 import { useActorEdit } from './useActorEdit';
-
-const DynamicTextEditor = dynamic(
-	() => import('@/ui/form-elements/TextEditor'),
-	{
-		ssr: false,
-	}
-);
 
 const ActorEdit: FC = () => {
 	const {
