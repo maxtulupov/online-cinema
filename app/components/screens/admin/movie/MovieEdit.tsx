@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import { FC } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
+import TextAreaField from '@/components/ui/form-elements/TextAreaField';
 import UploadField from '@/components/ui/form-elements/UploadField/UploadField';
 
 import SkeletonLoader from '@/ui/SkeletonLoader';
@@ -128,6 +129,15 @@ const MovieEdit: FC = () => {
 								rules={{
 									required: 'Please select at least one actor!',
 								}}
+							/>
+
+							<TextAreaField
+								{...register('description', {
+									required: 'Description is required!',
+								})}
+								placeholder="Description"
+								error={errors.description}
+								style={{ width: '100%' }}
 							/>
 
 							<Controller

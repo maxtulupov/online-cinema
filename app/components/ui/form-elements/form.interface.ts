@@ -3,6 +3,7 @@ import {
 	ButtonHTMLAttributes,
 	CSSProperties,
 	InputHTMLAttributes,
+	TextareaHTMLAttributes,
 } from 'react';
 import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form';
 
@@ -16,6 +17,11 @@ export interface IFieldProps {
 type TypeInputPropsField = InputHTMLAttributes<HTMLInputElement> & IFieldProps;
 
 export interface IField extends TypeInputPropsField {}
+
+type TypeTextAreaPropsField = TextareaHTMLAttributes<HTMLTextAreaElement> &
+	IFieldProps;
+
+export interface ITextAreaField extends TypeTextAreaPropsField {}
 
 type TypeEditorPropsField = EditorProps & IFieldProps;
 

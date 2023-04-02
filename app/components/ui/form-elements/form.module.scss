@@ -17,8 +17,11 @@
 .field {
 	@apply text-left mb-8;
 
-	input {
+	input, textarea {
 		@apply outline-border-none border-none focus:ring-0 bg-transparent text-gray-500 w-full m-0 px-0;
+	}
+	textarea {
+		@apply resize-none;
 	}
 }
 
