@@ -19,9 +19,7 @@ const Home: FC<IHome> = ({ slides, actors, trendingMovies }) => {
 				title="Watch movies online"
 				className="text-gray-300 mb-8 text-xl"
 			/>
-
 			{slides && <Slider slides={slides} />}
-
 			<div className="my-10">
 				<SubHeading title="Trending now" />
 				{trendingMovies.length && <Gallery items={trendingMovies} />}

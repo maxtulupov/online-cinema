@@ -33,15 +33,18 @@ export const getStaticProps: GetStaticProps = async () => {
 		const { data: dataActors } = await ActorService.getAll();
 		const datatTrendingMovies = await MovieService.getMostPopularMovies();
 
-		const actors: IGalleryItem[] = dataActors.slice(0, 7).map((a) => ({
-			name: a.name,
-			posterPath: a.photo,
-			link: getActorUrl(a.slug),
-			content: {
-				title: a.name,
-				subTitle: `+${a.countMovies} movies`,
-			},
-		}));
+		const actors: IGalleryItem[] = dataActors
+			.filter((act) => act.countMovies > 0)
+			.slice(0, 7)
+			.map((a) => ({
+				name: a.name,
+				posterPath: a.photo,
+				link: getActorUrl(a.slug),
+				content: {
+					title: a.name,
+					subTitle: `+${a.countMovies} movies`,
+				},
+			}));
 
 		const trendingMovies: IGalleryItem[] = datatTrendingMovies
 			.slice(0, 7)
