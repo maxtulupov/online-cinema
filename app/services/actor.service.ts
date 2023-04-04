@@ -1,4 +1,4 @@
-import axios from 'api/interceptors';
+import axios, { axiosClassic } from 'api/interceptors';
 
 import { IActorEditInput } from '@/screens/admin/actor/actor-edit.interface';
 
@@ -15,6 +15,10 @@ export const ActorService = {
 				  }
 				: {},
 		});
+	},
+
+	async getBySlug(slug: string) {
+		return axiosClassic.get<IActor>(getActorsUrl(`/by-slug/${slug}`));
 	},
 
 	async getById(_id: string) {
