@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query';
 
-import { getGenresUrl } from '../../../../../config/api.config';
+import { getGenreUrl } from '@/config/url.config';
+
 import { GenreService } from '../../../../../services/genre.service';
 import { IMenuItem } from '../menu.interface';
 
@@ -16,7 +17,7 @@ export const usePopularGenres = () => {
 						(genre) =>
 							({
 								icon: genre.icon,
-								link: getGenresUrl(genre.slug),
+								link: getGenreUrl(genre.slug),
 								title: genre.name,
 							} as IMenuItem)
 					)
