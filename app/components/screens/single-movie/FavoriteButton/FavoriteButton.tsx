@@ -24,7 +24,7 @@ const FavoriteButton: FC<{ movieId: string }> = ({ movieId }) => {
 	}, [favoritesMovies, isSmashed, movieId]);
 
 	const { mutateAsync } = useMutation(
-		'update actor',
+		'update favorites',
 		() => UserService.toggleFavorite(movieId),
 		{
 			onError(error) {
