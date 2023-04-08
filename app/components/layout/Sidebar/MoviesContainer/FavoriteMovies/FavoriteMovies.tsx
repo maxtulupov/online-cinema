@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import dynamic from 'next/dynamic';
+import { FC, useEffect } from 'react';
 
 import { useFavorites } from '@/components/screens/favorites/useFavorites';
 import SkeletonLoader from '@/components/ui/SkeletonLoader';
@@ -13,18 +14,20 @@ const FavoriteMovies: FC = () => {
 	const { isLoading, favoritesMovies } = useFavorites();
 	const { user } = useAuth();
 
-	if (!user) return <NotAuthFavorites />;
-
 	return isLoading ? (
 		<div className="mt-11">
 			<SkeletonLoader count={3} className="h-28 mb-4" />
 		</div>
+	) : user ? (
+		favoritesMovies && favoritesMovies?.length > 0 ? (
+			<MovieList
+				link="/favorites"
+				movies={favoritesMovies?.slice(0, 3) || []}
+				title="Favorites"
+			/>
+		) : null
 	) : (
-		<MovieList
-			link="/favorites"
-			movies={favoritesMovies?.slice(0, 3) || []}
-			title="Favorites"
-		/>
+		<NotAuthFavorites />
 	);
 };
 
